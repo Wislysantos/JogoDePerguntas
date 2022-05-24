@@ -8,7 +8,8 @@ export default function handler(req, res){
     
 
     if(questaoSelecionada.length === 1){
-        const questao = questaoSelecionada[0]
+        //aqui estou usando o metodo embaralharResposta para ele alterna a reposta para a reposta nao cair sempre na primeira pozição 
+        const questao = questaoSelecionada[0].embaralharResposta()
         res.status(200).json(questao.paraObjeto())
     }else{
         res.status(204).send()

@@ -28,7 +28,7 @@ const questoes: QuestaoModel[] = [
         RespostaModel.errada('Equilátero'),
         RespostaModel.errada('Isóceles'),
         RespostaModel.errada('Trapézio'),
-        RespostaModel.errada('Escaleno'),
+        RespostaModel.certa('Escaleno'),
     ])
 ]
 

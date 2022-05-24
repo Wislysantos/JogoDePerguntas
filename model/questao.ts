@@ -1,3 +1,4 @@
+import { embaralhar } from "../functions/array"
 import RespostaModel from "./resposta"
 
 export default class QuestaoModel{
@@ -38,6 +39,13 @@ export default class QuestaoModel{
             if(resposta.revelada) return true
         }
         return false
+    }
+     
+    //fiz um metodo com instancia para ele sempre gerar instancias novas para ele nao mecher na atual 
+    embaralharResposta():QuestaoModel{
+        let respostasEmbaralhar = embaralhar(this.#respostas)
+        //então aqui eu crio nova intancia de QuetaoModel mais ela esta com as repostas diferente da ordem original
+       return new QuestaoModel(this.#id, this.#enuciado, respostasEmbaralhar, this.#acertou)
     }
 
     //este metodo é para converte o meu objeto para instancia para objeto literal do javaScript

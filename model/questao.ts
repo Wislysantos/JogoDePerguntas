@@ -1,4 +1,5 @@
 import { embaralhar } from "../functions/array"
+import questoes from "../pages/api/bancoDeQuestoes"
 import RespostaModel from "./resposta"
 
 export default class QuestaoModel{
@@ -39,6 +40,16 @@ export default class QuestaoModel{
             if(resposta.revelada) return true
         }
         return false
+    }
+    //metodo para ele mostrar se vc acertou ou errou e revelar qual das reposta esta certa
+    responder(indice: number) : QuestaoModel{
+        const acertou = this.#respostas[indice]?.certa
+        const respostas = this.#respostas.map((resposta, i)=>{
+            const respostaSelecionada = indice === i
+            const deveRevelar = respostaSelecionada || resposta.certa
+            return deveRevelar ? resposta.revelar() : resposta
+        } )
+        return new QuestaoModel(this.#id, this.#enuciado, respostas, acertou)
     }
      
     //fiz um metodo com instancia para ele sempre gerar instancias novas para ele nao mecher na atual 

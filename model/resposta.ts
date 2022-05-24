@@ -1,3 +1,4 @@
+
 /**
  * resposta
  */
@@ -14,6 +15,14 @@
         this.#revelada = revelada
     }
 
+    static errada(valor: string){
+        return new RespostaModel(valor, false)
+    }
+
+    static certa(valor: string){
+        return new RespostaModel(valor, true)
+    }
+
     get valor(){
         return this.#valor
     }
@@ -26,4 +35,12 @@
         return this.#revelada
     }
 
+
+    paraObjeto(){
+        return {
+            valor: this.#valor,
+            certa: this.#certa,
+            revelada: this.#revelada,
+        }
+    }
 }

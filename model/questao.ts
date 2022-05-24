@@ -7,7 +7,7 @@ export default class QuestaoModel{
     #respostas: RespostaModel[]
     #acertou: boolean
 
-    constructor(id: number,enuciado: string, respostas: RespostaModel[], acertou: boolean ){
+    constructor(id: number,enuciado: string, respostas: RespostaModel[], acertou?: boolean ){
         this.#id = id
         this.#enuciado = enuciado
         this.#respostas = respostas
@@ -40,5 +40,15 @@ export default class QuestaoModel{
         return false
     }
 
+    //este metodo é para converte o meu objeto para instancia para objeto literal do javaScript
+    paraObjeto(){
+        return{
+            id: this.#id,
+            enuciado: this.#enuciado,
+            //aqui eu estou pegando cada elemento e convertando para um objeto 
+            respostas: this.#respostas.map(resp=>resp.paraObjeto()),
+            acertou: this.#acertou,
+        }
+    }
 
 }
